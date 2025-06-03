@@ -1,0 +1,12 @@
+.category-filter button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: none;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+.category-filter button.active {
+  background-color: #cc0000;
+  color: white;
+}
