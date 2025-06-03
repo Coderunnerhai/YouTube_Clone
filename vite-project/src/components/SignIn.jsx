@@ -63,11 +63,13 @@ const handleLogin = async () => {
 };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
-      <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
-      <button type="submit">Sign In</button>
-    </form>
+    <div className="signin-wrapper">
+  <form className="signin-form" onSubmit={handleSubmit}>
+    <input type="email" placeholder="Email" />
+    <input type="password" placeholder="Password" />
+    <button type="submit">Sign In</button>
+  </form>
+</div>
   );
 };
 

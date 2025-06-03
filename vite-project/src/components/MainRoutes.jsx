@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import App from "../App";
 import Register from './Register';
-import SignIn from './Signin';
+import SignIn from './SignIn';
 
 const MainRoutes = () => {
   return (
