@@ -2,17 +2,42 @@ import React, { useState, useEffect } from "react";
 import "./VideoDetail.css";
 import { useParams } from 'react-router-dom';
 
-const videoIds = {
-  1: "W6NZfCO5SIk",
-  2: "jS4aFq5-91M",
-  3: "2ekLRIjFg1M",
-  4: "xNN7iTA57jM",
-  5: "aqz-KE-bpKQ",
-};
+const videos = [
+  {
+    id: 1,
+    title: "Sample Nature Video",
+    description: "Relaxing nature scenes with ambient sound.",
+    url: "https://samplelib.com/lib/preview/mp4/sample-5s.mp4",
+  },
+  {
+    id: 2,
+    title: "Waterfall Video",
+    description: "Beautiful waterfall in a forest.",
+    url: "https://samplelib.com/lib/preview/mp4/sample-10s.mp4",
+  },
+  {
+    id: 3,
+    title: "City Timelapse",
+    description: "Fast-paced city life timelapse footage.",
+    url: "https://samplelib.com/lib/preview/mp4/sample-15s.mp4",
+  },
+  {
+    id: 4,
+    title: "Calm Beach",
+    description: "Waves gently hitting the beach.",
+    url: "https://samplelib.com/lib/preview/mp4/sample-20s.mp4",
+  },
+  {
+    id: 5,
+    title: "Night Sky",
+    description: "A peaceful view of the starry night sky.",
+    url: "https://samplelib.com/lib/preview/mp4/sample-30s.mp4",
+  },
+];
 
 const VideoDetail = ({ video }) => {
+  const [selectedVideo, setSelectedVideo] = useState(videos[0]);
   const { id: videoId } = useParams();
-  console.log('🧪 videoId:', videoId);
   const [likes, setLikes] = useState(video.likes || 0);
   const [dislikes, setDislikes] = useState(video.dislikes || 0);
   const [comments, setComments] = useState([]);
@@ -91,17 +116,14 @@ const VideoDetail = ({ video }) => {
 
   return (
     <div className="video-detail">
-      <h2>{video.title}</h2>
-      <iframe
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${videoIds[video.id]}`}
-        title={video.title}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
-      <p>{video.description}</p>
+      <h2>{selectedVideo.title}</h2>
+
+      <video width="560" height="315" controls>
+        <source src={selectedVideo.url} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      <p>{selectedVideo.description}</p>
 
       <div className="video-actions">
         <button onClick={handleLike}>👍 Like {likes}</button>

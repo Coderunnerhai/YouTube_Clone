@@ -17,8 +17,6 @@ const navigate = useNavigate();
 
   const handleSubmit = async e => {
   e.preventDefault();
-  setLoading(true);
-   console.log('Sending login form:', form);
   try {
     const res = await axios.post('http://localhost:5100/users/login', form);
     alert(res.data.message);
@@ -64,12 +62,12 @@ const handleLogin = async () => {
 
   return (
     <div className="signin-wrapper">
-  <form className="signin-form" onSubmit={handleSubmit}>
-    <input type="email" placeholder="Email" />
-    <input type="password" placeholder="Password" />
-    <button type="submit">Sign In</button>
-  </form>
-</div>
+  <form onSubmit={handleSubmit} className="signin-form">
+      <input name="email" type="email" placeholder="Email" onChange={handleChange} required />
+      <input name="password" type="password" placeholder="Password" onChange={handleChange} required />
+      <button type="submit">Sign In</button>
+    </form>
+    </div>
   );
 };
 
